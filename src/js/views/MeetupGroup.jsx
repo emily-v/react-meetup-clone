@@ -4,7 +4,7 @@ import React from 'react';
 import rigoImage from '../../img/rigo-baby.jpg';
 
 //create your first component
-export class Home extends React.Component{
+export class MeetupGroup extends React.Component{
     
     render(){
         return (
