@@ -1,18 +1,27 @@
 import React from 'react';
 
-//include images into your bundle
-import rigoImage from '../../img/rigo-baby.jpg';
+import TopBar from '../component/TopBar.jsx';
+import GroupJumbotron from '../component/GroupJumbotron.jsx';
+import EventOverview from '../component/EventOverview.jsx';
 
 //create your first component
 export class MeetupGroup extends React.Component{
     
     render(){
         return (
-            <div className="text-center mt-5">
-                <h1>Hello Rigo!</h1>
-                <p><img src={rigoImage} /></p>
-                <a href="#" className="btn btn-success">If you see this green button... bootstrap is working</a>
-                <p>Made by <a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with love!</p>
+            <div>
+                <TopBar />
+                <GroupJumbotron />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 mx-auto">
+                            <h4>Next Events</h4>
+                            <EventOverview />
+                            <EventOverview />
+                            <EventOverview />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
