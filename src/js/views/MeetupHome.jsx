@@ -3,6 +3,7 @@ import React from 'react';
 import TopBar from '../component/TopBar.jsx';
 import HomeJumbotron from '../component/HomeJumbotron.jsx';
 import EventOverview from '../component/EventOverview.jsx';
+import Footer from '../component/Footer.jsx';
 
 //create your first component
 export class MeetupHome extends React.Component{
@@ -21,6 +22,7 @@ export class MeetupHome extends React.Component{
                         </div>
                     </div>
                 </div>
+                <Footer />
             </React.Fragment>
         );
     }
