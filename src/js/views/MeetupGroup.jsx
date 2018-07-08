@@ -9,7 +9,7 @@ export class MeetupGroup extends React.Component{
     
     render(){
         return (
-            <div>
+            <React.Fragment>
                 <TopBar />
                 <GroupJumbotron />
                 <div className="container">
@@ -22,7 +22,7 @@ export class MeetupGroup extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

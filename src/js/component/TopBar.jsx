@@ -6,9 +6,9 @@ function TopBar(props){
     return (
         <div>
             <nav className="navbar navbar-nav navbar-expand-sm bg-dark d-flex justify-content-between pl-3">
-                <a className="nav-item" href="#">
+                <Link to={"/"} className="nav-item">
                     <img src="http://via.placeholder.com/150x50" />
-                </a>
+                </Link>
                 <button type="button" className="nav-item btn btn-primary" href="#">Login</button>
             </nav>
         </div>

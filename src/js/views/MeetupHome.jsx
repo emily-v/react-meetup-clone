@@ -9,15 +9,19 @@ export class MeetupHome extends React.Component{
     
     render(){
         return (
-            <div>
+            <React.Fragment>
                 <TopBar />
                 <HomeJumbotron />
                 <div className="container">
-                    <EventOverview />
-                    <EventOverview />
-                    <EventOverview />
+                    <div className="row">
+                        <div className="col-md-8 mx-auto">
+                            <EventOverview />
+                            <EventOverview />
+                            <EventOverview />
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
