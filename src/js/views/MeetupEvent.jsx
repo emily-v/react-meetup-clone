@@ -3,7 +3,6 @@ import React from 'react';
 import TopBar from '../component/TopBar.jsx';
 import EventJumbotron from '../component/EventJumbotron.jsx';
 import EventDetails from '../component/EventDetails.jsx';
-import EventSidePanel from '../component/EventSidePanel.jsx';
 import Footer from '../component/Footer.jsx';
 
 
@@ -17,7 +16,6 @@ export class MeetupEvent extends React.Component{
                 <TopBar />
                 <EventJumbotron />
                 <EventDetails />
-                <EventSidePanel />
                 <Footer />
       
             </React.Fragment>
