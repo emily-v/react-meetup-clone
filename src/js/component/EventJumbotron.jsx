@@ -17,7 +17,7 @@ function EventJumbotron(props){
                 </div>
             </div>
         </div>
-        );
+    );
 }
 
 

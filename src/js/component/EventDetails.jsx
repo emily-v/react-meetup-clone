@@ -23,7 +23,7 @@ function EventDetails(props){
                 </div>
             </div>
         </div>
-        );
+    );
 }
 
 

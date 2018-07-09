@@ -13,15 +13,12 @@ export class MeetupEvent extends React.Component{
     render(){
         return (
             <React.Fragment>
-           
                 <TopBar />
                 <EventJumbotron />
                 <EventDetails />
                 <EventSidePanel />
                 <Footer />
-      
             </React.Fragment>
-             
         );
     }
 }
