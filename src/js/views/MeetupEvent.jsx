@@ -1,19 +1,27 @@
 import React from 'react';
 
-//include images into your bundle
-import rigoImage from '../../img/rigo-baby.jpg';
+import TopBar from '../component/TopBar.jsx';
+import EventJumbotron from '../component/EventJumbotron.jsx';
+import EventDetails from '../component/EventDetails.jsx';
+import EventSidePanel from '../component/EventSidePanel.jsx';
+import Footer from '../component/Footer.jsx';
+
 
 //create your first component
 export class MeetupEvent extends React.Component{
     
     render(){
         return (
-            <div className="text-center mt-5">
-                <h1>Hello Rigo!</h1>
-                <p><img src={rigoImage} /></p>
-                <a href="#" className="btn btn-success">If you see this green button... bootstrap is working</a>
-                <p>Made by <a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with love!</p>
-            </div>
+            <React.Fragment>
+           
+                <TopBar />
+                <EventJumbotron />
+                <EventDetails />
+                <EventSidePanel />
+                <Footer />
+      
+            </React.Fragment>
+             
         );
     }
 }
