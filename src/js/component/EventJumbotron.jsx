@@ -22,13 +22,7 @@ function EventJumbotron(props){
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     );
-=======
-        
-        
-        );
->>>>>>> 3816e8110db74914f17bb37039a7af14d0f63a5e
 }
 
 
