@@ -114,7 +114,12 @@ export default class Layout extends React.Component {
                     RSVPNo: [111,222,333]
                 }
             ],
-            "session":{},
+            "session":{
+                    id:1,
+                    username:"Sally23",
+                    password: "12345",
+                    listOfEvents: "ghdgtege12422526161gsdhdbu"
+            },
             "isLoading": true
         };
     }
