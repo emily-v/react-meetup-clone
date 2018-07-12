@@ -26,9 +26,9 @@ function EventDetails(props){
                         <div className="col-md-8">
                             <div className="card">
                                 <div className="card-body">
-                                    <p className="card-text">Saturday, April 28</p>
-                                    <p>2018</p>
-                                    <p>7:00am</p>
+                                    <p className="card-text">{props.dateTime}</p>{/*date*/}
+                                    <p>{props.dateTime}</p>{/*year*/}
+                                    <p>{props.dateTime}</p>{/*time*/}
                                     <p>Every first and last tuesday of the month</p>
                                 </div>
                             </div>
@@ -39,6 +39,10 @@ function EventDetails(props){
         </div>
     );
 }
+
+EventDetails.propTypes = {
+        dateTime: PropTypes.string
+    };
 
 
 export default EventDetails;
