@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
+import {Consumer} from "../stores/AppContext.jsx";
+
 function HomeJumbotron(props){
     return (
         <div className="jumbotron-fluid text-white bg-dark p-1 mb-3">

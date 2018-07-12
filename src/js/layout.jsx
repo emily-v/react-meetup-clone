@@ -5,6 +5,8 @@ import {MeetupHome} from "./views/MeetupHome.jsx";
 import {MeetupGroup} from "./views/MeetupGroup.jsx";
 import {MeetupEvent} from "./views/MeetupEvent.jsx";
 
+import {Provider} from "./stores/AppContext.jsx";
+
 export default class Layout extends React.Component {
     
     constructor(){
@@ -39,7 +41,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Miami, FL",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 1
                 },
                 {
                     ID: 20,
@@ -48,7 +51,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Coral Gables, FL",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 1
                 },
                 {
                     ID: 30,
@@ -57,7 +61,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Brickell",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 1
                 },
                 {
                     ID: 40,
@@ -66,7 +71,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Four Seasons Miami",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 2
                 },
                 {
                     ID: 50,
@@ -75,7 +81,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Bayfront Park",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 2
                 },
                 {
                     ID: 60,
@@ -84,7 +91,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Flagler Street",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 2
                 },
                 {
                     ID: 70,
@@ -93,7 +101,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Key West, FL",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 3
                 },
                 {
                     ID: 80,
@@ -102,7 +111,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Key Biscayne",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 3
                 },
                 {
                     ID: 90,
@@ -111,7 +121,8 @@ export default class Layout extends React.Component {
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Islamorada",
                     RSVPYes: [100,200,300],
-                    RSVPNo: [111,222,333]
+                    RSVPNo: [111,222,333],
+                    meetupID: 3
                 }
             ],
             "session":{
@@ -129,10 +140,12 @@ export default class Layout extends React.Component {
             <React.Fragment>
                 <BrowserRouter>
                     <Switch>
-                        <Route exact path="/" component={MeetupHome} />
-                        <Route path="/group" component={MeetupGroup} />
-                        <Route path="/event" component={MeetupEvent} />
-                        <Route render={() => <h1>Not found!</h1>} />
+                        <Provider value={{state:this.state, actions:this.actions}}>
+                            <Route exact path="/" component={MeetupHome} />
+                            <Route path="/group" component={MeetupGroup} />
+                            <Route path="/event" component={MeetupEvent} />
+                            <Route render={() => <h1>Not found!</h1>} />
+                        </Provider>
                     </Switch>
                 </BrowserRouter>
             </React.Fragment>
