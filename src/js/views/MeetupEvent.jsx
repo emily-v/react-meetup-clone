@@ -19,20 +19,20 @@ export class MeetupEvent extends React.Component{
                 <EventDetails />*/}
                 <Consumer>
                     {({ state, actions }) => 
-                    (
-                        state.events.map((item,index)=>{
-                            return <EventJumbotron 
-                                    key={index}
-                                    ID={item.ID}
-                                    name={item.name}
-                                    dateTime={item.dateTime}
-                                    description={item.description}
-                                    location={item.location}
-                                    RSVPYes={item.RSVPYes}
-                                    RSVPNo={item.RSVPNo}
-                                    />;
-                                        
-                        })
+                        (
+                            
+                            state.events.map((item,index)=>{
+                                return <EventJumbotron 
+                                        key={index}
+                                        ID={item.ID}
+                                        name={item.name}
+                                        dateTime={item.dateTime}
+                                        description={item.description}
+                                        location={item.location}
+                                        RSVPYes={item.RSVPYes}
+                                        RSVPNo={item.RSVPNo}
+                                        />;    
+                            })
                         
                     )
                     }

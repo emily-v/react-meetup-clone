@@ -14,7 +14,7 @@ function EventOverview(props){
                 </div>
                 <div className="col">
                     <h4><Link to={"/event"}>{props.name}</Link></h4>
-                    <p><Link to={"/group"}>Meetup {props.meetupID}</Link></p>
+                    <p><Link to={"/group/"+props.meetupID}>Meetup {props.meetupID}</Link></p>
                 </div>
             </div>
         </div>
