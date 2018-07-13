@@ -13,8 +13,8 @@ function EventOverview(props){
                     <h3>{props.dateTime}</h3>
                 </div>
                 <div className="col">
-                    <h4><Link to={"/event"}>{props.name}</Link></h4>
-                    <p><Link to={"/group"}>Meetup {props.meetupID}</Link></p>
+                    <h4><Link to={"/event/"+props.ID}>{props.name}</Link></h4>
+                    <p><Link to={"/group/"+props.meetupID}>Meetup {props.meetupID}</Link></p>
                 </div>
             </div>
         </div>
@@ -24,7 +24,8 @@ function EventOverview(props){
 EventOverview.propTypes = {
         dateTime: PropTypes.string,
         name: PropTypes.string,
-        meetupID: PropTypes.number
+        meetupID: PropTypes.number,
+        ID: PropTypes.number
     };
 
 export default EventOverview;

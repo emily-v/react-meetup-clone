@@ -142,9 +142,9 @@ export default class Layout extends React.Component {
                     <Switch>
                         <Provider value={{state:this.state, actions:this.actions}}>
                             <Route exact path="/" component={MeetupHome} />
-                            <Route path="/group" component={MeetupGroup} />
-                            <Route path="/event" component={MeetupEvent} />
-                            <Route render={() => <h1>Not found!</h1>} />
+                            <Route path="/group/:theid" component={MeetupGroup} />
+                            <Route path="/event/:theid" component={MeetupEvent} />
+                            {/*<Route render={() => <h1>Not found!</h1>} />*/}
                         </Provider>
                     </Switch>
                 </BrowserRouter>
