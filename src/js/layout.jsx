@@ -133,6 +133,46 @@ export default class Layout extends React.Component {
             },
             "isLoading": true
         };
+        
+        this.actions = {
+            "loadSession": (receivedUsername, receivedPassword) => {
+                this.setState(
+                    {
+                        session: {
+                            id:1,
+                            username:"Sally23",
+                            password: "12345",
+                            listOfEvents: "ghdgtege12422526161gsdhdbu"
+                        }
+                        
+                    });
+            },
+            "rsvpEvent": (id, userId, answer, token) => {
+                var indexOfEvent = 0;
+                var theArrayWithEvent = this.state.events.filter( (item, index) => {
+                    
+                    if(item.ID === parseInt(id)){
+                        indexOfEvent = index;
+                        return true;
+                    }
+                    
+                });
+                let event = theArrayWithEvent[0];
+                
+                if(answer === "yes"){
+                    event.meta_keys._rsvpYes.push(userId);
+                }else{
+                    event.meta_keys._rsvpNo.push(userId);
+                }
+                
+                var tempArray = this.state.events;
+                tempArray[indexOfEvent] = event;
+                
+                this.setState({"events": tempArray});
+                }
+            
+        };
+        
     }
 
     render() {
