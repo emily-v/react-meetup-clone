@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TopBar from '../component/TopBar.jsx';
+import Navbar from '../component/Navbar.jsx';
 import HomeJumbotron from '../component/HomeJumbotron.jsx';
 import EventOverview from '../component/EventOverview.jsx';
 import Footer from '../component/Footer.jsx';
@@ -13,7 +13,7 @@ export class MeetupHome extends React.Component{
     render(){
         return (
             <React.Fragment>
-                <TopBar />
+                <Navbar />
                 <HomeJumbotron />
                 <div className="container">
                     <div className="row">

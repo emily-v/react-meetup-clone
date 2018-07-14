@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TopBar from '../component/TopBar.jsx';
+import Navbar from '../component/Navbar.jsx';
 import EventJumbotron from '../component/EventJumbotron.jsx';
 import EventDetails from '../component/EventDetails.jsx';
 import Footer from '../component/Footer.jsx';
@@ -14,7 +14,7 @@ export class MeetupEvent extends React.Component{
     render(){
         return (
             <React.Fragment>
-                <TopBar />
+                <Navbar />
                 {/*<EventJumbotron />
                 <EventDetails />*/}
                 <Consumer>

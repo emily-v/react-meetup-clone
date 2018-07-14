@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TopBar from '../component/TopBar.jsx';
+import Navbar from '../component/Navbar.jsx';
 import GroupJumbotron from '../component/GroupJumbotron.jsx';
 import EventOverview from '../component/EventOverview.jsx';
 import Footer from '../component/Footer.jsx';
@@ -14,7 +14,7 @@ export class MeetupGroup extends React.Component{
     render(){
         return (
             <React.Fragment>
-                <TopBar />
+                <Navbar />
                 <Consumer>
                     {({ state, actions }) => 
                         {
