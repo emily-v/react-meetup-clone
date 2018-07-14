@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Navbar from '../component/Navbar.jsx';
 import EventJumbotron from '../component/EventJumbotron.jsx';
@@ -18,45 +19,42 @@ export class MeetupEvent extends React.Component{
                 {/*<EventJumbotron />
                 <EventDetails />*/}
                 <Consumer>
-                    {({ state, actions }) => 
-                        (
+                    {({ state, actions }) => {
                             
-                            state.events.map((item,index)=>{
-                                return <EventJumbotron 
-                                        key={index}
-                                        ID={item.ID}
-                                        name={item.name}
-                                        dateTime={item.dateTime}
-                                        description={item.description}
-                                        location={item.location}
-                                        RSVPYes={item.RSVPYes}
-                                        RSVPNo={item.RSVPNo}
-                                        />;    
-                            })
+                            var selected=state.events.filter(item => {
+                                return item.ID === parseInt (this.props.match.params.theid);
+                            });
+                            
+                            if(selected.length <=0) {return <h3>This event does not exsist</h3>;}
+                            var event=selected [0];
+                            
+                            return (
+                                <React.Fragment>
+                                
+                                    <EventJumbotron 
+                                    ID={event.ID}
+                                    name={event.name}
+                                    dateTime={event.dateTime}
+                                    description={event.description}
+                                    location={event.location}
+                                    RSVPYes={event.RSVPYes}
+                                    RSVPNo={event.RSVPNo}
+                                    />
+
+                                    <EventDetails
+                                    ID={event.ID}
+                                    name={event.name}
+                                    dateTime={event.dateTime}
+                                    description={event.description}
+                                    location={event.location}
+                                    RSVPYes={event.RSVPYes}
+                                    RSVPNo={event.RSVPNo}
+                                    />
+                                </React.Fragment>
+                                );
+                        }
                         
-                    )
-                    }
-                    
-                </Consumer>
-                <Consumer>
-                    {({ state, actions }) => 
-                    (
-                        state.events.map((item,index)=>{
-                            return <EventDetails 
-                                    key={index}
-                                    ID={item.ID}
-                                    name={item.name}
-                                    dateTime={item.dateTime}
-                                    description={item.description}
-                                    location={item.location}
-                                    RSVPYes={item.RSVPYes}
-                                    RSVPNo={item.RSVPNo}
-                                    />;
-                                        
-                        })
-                        
-                    )
-                    }
+                }
                     
                 </Consumer>
                 <Footer />
@@ -65,24 +63,9 @@ export class MeetupEvent extends React.Component{
     }
 }
 
+MeetupEvent.propTypes = {
+        match: PropTypes.object
+    };
 
-{/*<Consumer>
-    {({ state, actions }) => 
-    (
-        state.events.map((item,index)=>{
-            return <EventInfo 
-                    key={index}
-                    ID={item.ID}
-                    name={item.name}
-                    dateTime={item.dateTime}
-                    description={item.description}
-                    location={item.location}
-                    RSVPYes={item.RSVPYes}
-                    RSVPNo={item.RSVPNo}
-                    />;
-            
-        })
-        
-    )
-}
-</Consumer>*/}
+                    {/*search(event.id===theid)
+                    item.ID === this.props.match.params.theid*/}
