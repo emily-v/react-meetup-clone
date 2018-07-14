@@ -126,10 +126,10 @@ export default class Layout extends React.Component {
                 }
             ],
             "session":{
-                    id:1,
+                    /*id:1,
                     username:"Sally23",
                     password: "12345",
-                    listOfEvents: "ghdgtege12422526161gsdhdbu"
+                    listOfEvents: "ghdgtege12422526161gsdhdbu"*/
             },
             "isLoading": true
         };
@@ -139,10 +139,10 @@ export default class Layout extends React.Component {
                 this.setState(
                     {
                         session: {
-                            id:1,
-                            username:"Sally23",
-                            password: "12345",
-                            listOfEvents: "ghdgtege12422526161gsdhdbu"
+                            id:1000,
+                            username:receivedUsername,
+                            password:receivedPassword,
+                            token: "ghdgtege12422526161gsdhdbu"
                         }
                         
                     });
@@ -184,8 +184,8 @@ export default class Layout extends React.Component {
                             <Route exact path="/" component={MeetupHome} />
                             <Route path="/group/:theid" component={MeetupGroup} />
                             <Route path="/event/:theid" component={MeetupEvent} />
-                            {/*<Route render={() => <h1>Not found!</h1>} />*/}
                         </Provider>
+                        <Route render={() => <h1>Not found!</h1>} />
                     </Switch>
                 </BrowserRouter>
             </React.Fragment>
