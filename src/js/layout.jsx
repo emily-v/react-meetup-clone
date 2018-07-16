@@ -1,3 +1,10 @@
+/*-------TO DO FOR THIS PROJECT---------
+-Social media/clock icons
+-Fix date/time format with Moment
+-Disable RSVP button on click
+-Change "Meetup N" to name of meetup group
+*/
+
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -40,7 +47,7 @@ export default class Layout extends React.Component {
                     dateTime: "August 22 6:40 pm",
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a malesuada diam. Donec porta varius est nec lobortis. Curabitur consectetur in risus ut aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae magna pulvinar, rhoncus leo ac, accumsan metus. Vestibulum mattis placerat ex id varius. Maecenas sit amet luctus orci. Nunc tempor id tellus sed gravida. Aenean ut lacus sed leo congue euismod non ac ligula. Morbi rhoncus blandit magna in tincidunt. Nulla ipsum turpis, ultrices at commodo venenatis, tincidunt at ligula. Suspendisse eget tortor ac lacus luctus accumsan a sit amet erat. Vivamus tincidunt pharetra consectetur.",
                     location: "Miami, FL",
-                    RSVPYes: [100,200,300],
+                    RSVPYes: [100,200,300,400],
                     RSVPNo: [111,222,333],
                     meetupID: 1
                 },
@@ -126,10 +133,7 @@ export default class Layout extends React.Component {
                 }
             ],
             "session":{
-                    /*id:1,
-                    username:"Sally23",
-                    password: "12345",
-                    listOfEvents: "ghdgtege12422526161gsdhdbu"*/
+                    
             },
             "isLoading": true
         };
@@ -160,9 +164,9 @@ export default class Layout extends React.Component {
                 let event = theArrayWithEvent[0];
                 
                 if(answer === "yes"){
-                    event.meta_keys._rsvpYes.push(userId);
+                    event.RSVPYes.push(userId);
                 }else{
-                    event.meta_keys._rsvpNo.push(userId);
+                    event.RSVPNo.push(userId);
                 }
                 
                 var tempArray = this.state.events;

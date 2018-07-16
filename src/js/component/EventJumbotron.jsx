@@ -28,7 +28,7 @@ export class EventJumbotron extends React.Component{
                         </div>
                         <div className="card text-white text-center bg-secondary mb-3">
                             <div className="card-body">
-                                <h2 className="card-title">3 People Going</h2>{/*change to show length of Yes RSVP's*/}
+                                <h2 className="card-title">{this.events.rsvpYes.length} People Going</h2>{/*change to show length of Yes RSVP's*/}
                                 {!user.token ?
                                     <button type="button"
                                             className="btn btn-primary"

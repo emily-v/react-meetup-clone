@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//WHY NOT WORKING?
+/*import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faTw from '@fortawesome/fontawesome-free-brands/faTwitter';
+import faFa from '@fortawesome/fontawesome-free-brands/faFacebook';
+import faClock from '@fortawesome/fontawesome-free-solid/faClock';*/
+
 import Navbar from '../component/Navbar.jsx';
-import EventJumbotron from '../component/EventJumbotron.jsx';
+//import EventJumbotron from '../component/EventJumbotron.jsx';
 import EventDetails from '../component/EventDetails.jsx';
 import Footer from '../component/Footer.jsx';
 
@@ -26,13 +32,17 @@ export class MeetupEvent extends React.Component{
                 <Consumer>
                     {({ state, actions }) => {
                             
-                            var user = state.session; //added from Nacho's. Where else is 'user' used?
+                            var user = state.session;
                             var selected=state.events.filter(item => {
                                 return item.ID === parseInt (this.props.match.params.theid);
                             });
                             
                             if(selected.length <=0) {return <h3>This event does not exsist</h3>;}
                             var event=selected [0];
+                            
+                            //HOW TO MAKE THESE WORK?
+                            //const yesDisabled = typeof event.RSVPYes !== 'undefined' && event.RSVPYes.includes("emily")  ? "disabled" : "";
+                            //const noDisabled =typeof event.RSVPNo !== 'undefined' && event.RSVPNo.includes("emily")  ? "disabled" : "";
                             
                             return (
                                 <div>
@@ -45,30 +55,30 @@ export class MeetupEvent extends React.Component{
                                             </div>
                                             <div className="card text-white text-center bg-secondary mb-3">
                                                 <div className="card-body">
-                                                    <h2 className="card-title">3 People Going</h2>{/*change to show length of Yes RSVP's*/}
+                                                    <h2 className="card-title">{event.RSVPYes.length} People Going</h2>
                                                     {!user.token ?
                                                         <button type="button"
                                                                 className="btn btn-primary"
-                                                                data-toggle="modal" //check if correct toggle attribute
-                                                                data-target="#exampleModal" //check if correct id
+                                                                data-toggle="modal"
+                                                                data-target="#exampleModal"
                                                                 onClick={ () => this.setState({login:true})}>
                                                                 Login to RSVP
                                                         </button>
                                                     :
                                                         <div>
                                                             <button type="button"
-                                                                    className="btn btn-primary mr-1" //need w-100 yesBTN??
-                                                                    //disabled={yesDisabled} //where is this function?
-                                                                    onClick={() => this.actions.rsvpEvent(   this.props.match.params.theid,
+                                                                    className="btn btn-primary mr-1"
+                                                                    //disabled={yesDisabled} NOT WORKING YET
+                                                                    onClick={() => actions.rsvpEvent(   this.props.match.params.theid,
                                                                                                         user.ID,
                                                                                                         "yes",
                                                                                                         user.token)}>
                                                                     Yes
                                                             </button>
                                                             <button type="button"
-                                                                    className="btn btn-primary ml-1" //need w-100 noBTN??
-                                                                    //disabled={noDisabled} //where is this function?
-                                                                    onClick={() => this.actions.rsvpEvent(   this.props.match.params.theid,
+                                                                    className="btn btn-primary ml-1"
+                                                                    //disabled={noDisabled} NOT WORKING YET
+                                                                    onClick={() => actions.rsvpEvent(   this.props.match.params.theid,
                                                                                                         user.ID,
                                                                                                         "no",
                                                                                                         user.token)}>
@@ -76,6 +86,11 @@ export class MeetupEvent extends React.Component{
                                                             </button>
                                                         </div>
                                                     }
+                                                    {/*WHY NOT WORKING???
+                                                    <div className="text-center">
+                                                        <FontAwesomeIcon icon={faTw} />
+                                                        <FontAwesomeIcon icon={faFa} />
+                                                    </div>*/}
                                                 </div>
                                             </div>
                                         </div>
@@ -90,25 +105,9 @@ export class MeetupEvent extends React.Component{
                                     RSVPNo={event.RSVPNo}
                                     />
                                 </div>
-                                    
-                                    
-                                    
-                                    /*<EventJumbotron 
-                                    ID={event.ID}
-                                    name={event.name}
-                                    dateTime={event.dateTime}
-                                    description={event.description}
-                                    location={event.location}
-                                    RSVPYes={event.RSVPYes}
-                                    RSVPNo={event.RSVPNo}
-                                    />*/
-
-                                    
                                 );
                         }
-                        
                 }
-                    
                 </Consumer>
                 <Footer />
             </React.Fragment>
@@ -119,6 +118,13 @@ export class MeetupEvent extends React.Component{
 MeetupEvent.propTypes = {
         match: PropTypes.object
     };
-
-                    {/*search(event.id===theid)
-                    item.ID === this.props.match.params.theid*/}
+    
+    /*<EventJumbotron 
+        ID={event.ID}
+        name={event.name}
+        dateTime={event.dateTime}
+        description={event.description}
+        location={event.location}
+        RSVPYes={event.RSVPYes}
+        RSVPNo={event.RSVPNo}
+        />*/

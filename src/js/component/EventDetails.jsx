@@ -26,6 +26,7 @@ function EventDetails(props){
                         <div className="col-md-8">
                             <div className="card">
                                 <div className="card-body">
+                                    {/*clock icon goes here*/}
                                     <p className="card-text">{props.dateTime}</p>{/*date*/}
                                     <p>{props.dateTime}</p>{/*year*/}
                                     <p>{props.dateTime}</p>{/*time*/}
