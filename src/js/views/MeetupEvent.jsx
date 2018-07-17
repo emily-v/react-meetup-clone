@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 //WHY NOT WORKING?
-/*import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faTw from '@fortawesome/fontawesome-free-brands/faTwitter';
-import faFa from '@fortawesome/fontawesome-free-brands/faFacebook';
-import faClock from '@fortawesome/fontawesome-free-solid/faClock';*/
+//import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+//import faTw from '@fortawesome/fontawesome-free-brands/faTwitter';
+//import faFa from '@fortawesome/fontawesome-free-brands/faFacebook';
+//import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 
 import Navbar from '../component/Navbar.jsx';
 //import EventJumbotron from '../component/EventJumbotron.jsx';
@@ -40,16 +41,15 @@ export class MeetupEvent extends React.Component{
                             if(selected.length <=0) {return <h3>This event does not exsist</h3>;}
                             var event=selected [0];
                             
-                            //HOW TO MAKE THESE WORK?
-                            //const yesDisabled = typeof event.RSVPYes !== 'undefined' && event.RSVPYes.includes("emily")  ? "disabled" : "";
-                            //const noDisabled =typeof event.RSVPNo !== 'undefined' && event.RSVPNo.includes("emily")  ? "disabled" : "";
+                            const yesDisabled = typeof event.RSVPYes !== 'undefined' && event.RSVPYes.includes(user.id)  ? "disabled" : "";
+                            const noDisabled =typeof event.RSVPNo !== 'undefined' && event.RSVPNo.includes(user.id)  ? "disabled" : "";
                             
                             return (
                                 <div>
                                     <div className="jumbotron text-white text-right bg-dark">
                                         <div className="row">
                                             <div className="col text-left">
-                                                <h5>{event.dateTime}</h5>
+                                                <h5><Moment format="MMM D">{event.dateTime}</Moment></h5>
                                                 <h1>{event.name}</h1>
                                                 <h4>Meetup {event.meetupID}</h4>{/*change to meetup group name*/}
                                             </div>
@@ -68,26 +68,26 @@ export class MeetupEvent extends React.Component{
                                                         <div>
                                                             <button type="button"
                                                                     className="btn btn-primary mr-1"
-                                                                    //disabled={yesDisabled} NOT WORKING YET
+                                                                    disabled={yesDisabled}
                                                                     onClick={() => actions.rsvpEvent(   this.props.match.params.theid,
-                                                                                                        user.ID,
+                                                                                                        user.id,
                                                                                                         "yes",
                                                                                                         user.token)}>
                                                                     Yes
                                                             </button>
                                                             <button type="button"
                                                                     className="btn btn-primary ml-1"
-                                                                    //disabled={noDisabled} NOT WORKING YET
+                                                                    disabled={noDisabled}
                                                                     onClick={() => actions.rsvpEvent(   this.props.match.params.theid,
-                                                                                                        user.ID,
+                                                                                                        user.id,
                                                                                                         "no",
                                                                                                         user.token)}>
                                                                     No
                                                             </button>
                                                         </div>
                                                     }
-                                                    {/*WHY NOT WORKING???
-                                                    <div className="text-center">
+
+                                                    {/*<div className="text-center">
                                                         <FontAwesomeIcon icon={faTw} />
                                                         <FontAwesomeIcon icon={faFa} />
                                                     </div>*/}

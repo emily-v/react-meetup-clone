@@ -3,22 +3,37 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: [
-    './src/js/index.js'
-  ],
+  entry: ['./src/js/index.js'], 
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
+    publicPath: path.resolve(__dirname, '/')
   },
   module: {
     rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader']
+        { 
+          test: /\.(js|jsx)$/, 
+          exclude: /node_modules/, 
+          use: [
+            "babel-loader", 
+            "eslint-loader"
+            ]
+        },
+        { test: /\.md$/, use: [
+              {
+                  loader: "html-loader"
+              },
+              {
+                  loader: "markdown-loader",
+                  options: {
+                      /* your options here */
+                  }
+              }
+          ]
         },
         {
-          test: /\.scss$/, use: [{
+          test: [/\.css$/, /\.scss$/],
+          use: [{
               loader: "style-loader" // creates style nodes from JS strings
           }, {
               loader: "css-loader" // translates CSS into CommonJS
@@ -27,7 +42,8 @@ module.exports = {
           }]
         }, //css only files
         { 
-          test: /\.(png|svg|jpg|gif)$/, use: {
+          test: /\.(png|svg|jpg|gif)$/, 
+          use: {
             loader: 'file-loader',
             options: { name: '[name].[ext]' } 
           }
@@ -36,11 +52,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js']
+    extensions: ['*', '.js', '.jsx']
   },
   devtool: "source-map",
   devServer: {
-    contentBase:  './dist',
+    contentBase: './dist',
     hot: true,
     disableHostCheck: true,
     historyApiFallback: true

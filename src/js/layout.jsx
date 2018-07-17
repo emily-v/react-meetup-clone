@@ -1,8 +1,8 @@
 /*-------TO DO FOR THIS PROJECT---------
 -Social media/clock icons
 -Fix date/time format with Moment
--Disable RSVP button on click
 -Change "Meetup N" to name of meetup group
+-Address change of RSVP response
 */
 
 import React from 'react';

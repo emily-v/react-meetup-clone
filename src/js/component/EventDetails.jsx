@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 import {Consumer} from "../stores/AppContext.jsx";
 
@@ -27,9 +28,8 @@ function EventDetails(props){
                             <div className="card">
                                 <div className="card-body">
                                     {/*clock icon goes here*/}
-                                    <p className="card-text">{props.dateTime}</p>{/*date*/}
-                                    <p>{props.dateTime}</p>{/*year*/}
-                                    <p>{props.dateTime}</p>{/*time*/}
+                                    <p className="mb-1"><Moment format="MMMM D">{props.dateTime}</Moment></p>
+                                    <p><Moment format="h:mm a">{props.dateTime}</Moment></p>
                                     <p>Every first and last tuesday of the month</p>
                                 </div>
                             </div>
