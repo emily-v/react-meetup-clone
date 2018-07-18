@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
-//WHY NOT WORKING?
-//import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-//import faTw from '@fortawesome/fontawesome-free-brands/faTwitter';
-//import faFa from '@fortawesome/fontawesome-free-brands/faFacebook';
-//import faClock from '@fortawesome/fontawesome-free-solid/faClock';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../component/Navbar.jsx';
 //import EventJumbotron from '../component/EventJumbotron.jsx';
@@ -16,7 +15,6 @@ import Footer from '../component/Footer.jsx';
 import {Consumer} from "../stores/AppContext.jsx";
 
 
-//create your first component
 export class MeetupEvent extends React.Component{
     
     constructor(props){
@@ -41,21 +39,21 @@ export class MeetupEvent extends React.Component{
                             if(selected.length <=0) {return <h3>This event does not exsist</h3>;}
                             var event=selected [0];
                             
-                            const yesDisabled = typeof event.RSVPYes !== 'undefined' && event.RSVPYes.includes(user.id)  ? "disabled" : "";
-                            const noDisabled =typeof event.RSVPNo !== 'undefined' && event.RSVPNo.includes(user.id)  ? "disabled" : "";
+                            const yesDisabled = typeof event.meta_keys._rsvpYes !== 'undefined' && event.meta_keys._rsvpYes.includes(user.id)  ? "disabled" : "";
+                            const noDisabled =typeof event.meta_keys._rsvpNo !== 'undefined' && event.meta_keys._rsvpNo.includes(user.id)  ? "disabled" : "";
                             
                             return (
                                 <div>
                                     <div className="jumbotron text-white text-right bg-dark">
                                         <div className="row">
                                             <div className="col text-left">
-                                                <h5><Moment format="MMM D">{event.dateTime}</Moment></h5>
-                                                <h1>{event.name}</h1>
-                                                <h4>Meetup {event.meetupID}</h4>{/*change to meetup group name*/}
+                                                <h5><Moment format="MMM D">{event.meta_keys.day}</Moment></h5>
+                                                <h1>{event.post_title}</h1>
+                                                <h4>Meetup {event.meta_keys._meetup}</h4>{/*change to meetup group name*/}
                                             </div>
                                             <div className="card text-white text-center bg-secondary mb-3">
-                                                <div className="card-body">
-                                                    <h2 className="card-title">{event.RSVPYes.length} People Going</h2>
+                                                <div className="card-body pb-1">
+                                                    <h2 className="card-title">{event.meta_keys._rsvpYes.length} People Going</h2>
                                                     {!user.token ?
                                                         <button type="button"
                                                                 className="btn btn-primary"
@@ -87,22 +85,22 @@ export class MeetupEvent extends React.Component{
                                                         </div>
                                                     }
 
-                                                    {/*<div className="text-center">
-                                                        <FontAwesomeIcon icon={faTw} />
-                                                        <FontAwesomeIcon icon={faFa} />
-                                                    </div>*/}
+                                                    <div className="text-center">
+                                                        <FontAwesomeIcon icon={faTwitter} className="h3 m-2"/>
+                                                        <FontAwesomeIcon icon={faFacebook} className="h3 m-2"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <EventDetails
                                     ID={event.ID}
-                                    name={event.name}
-                                    dateTime={event.dateTime}
-                                    description={event.description}
-                                    location={event.location}
-                                    RSVPYes={event.RSVPYes}
-                                    RSVPNo={event.RSVPNo}
+                                    name={event.post_title}
+                                    day={event.meta_keys.day}
+                                    time={event.meta_keys.time}
+                                    post_content={event.post_content}
+                                    _rsvpYes={event.meta_keys._rsvpYes}
+                                    _rsvpNo={event.meta_keys._rsvpNo}
                                     />
                                 </div>
                                 );

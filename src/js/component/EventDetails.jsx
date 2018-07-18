@@ -5,6 +5,9 @@ import Moment from 'react-moment';
 
 import {Consumer} from "../stores/AppContext.jsx";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+
 function EventDetails(props){
     return (
         <div>
@@ -27,9 +30,9 @@ function EventDetails(props){
                         <div className="col-md-8">
                             <div className="card">
                                 <div className="card-body">
-                                    {/*clock icon goes here*/}
-                                    <p className="mb-1"><Moment format="MMMM D">{props.dateTime}</Moment></p>
-                                    <p><Moment format="h:mm a">{props.dateTime}</Moment></p>
+                                    <FontAwesomeIcon icon={faClock} className="h3"/>
+                                    <p className="mb-1"><Moment format="MMMM D">{props.meta_keys.day}</Moment></p>
+                                    <p><Moment format="h:mm a">{props.meta_keys.time}</Moment></p>
                                     <p>Every first and last tuesday of the month</p>
                                 </div>
                             </div>
@@ -42,7 +45,7 @@ function EventDetails(props){
 }
 
 EventDetails.propTypes = {
-        dateTime: PropTypes.string
+        meta_keys: PropTypes.string
     };
 
 

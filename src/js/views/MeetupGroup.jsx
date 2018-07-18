@@ -25,9 +25,8 @@ export class MeetupGroup extends React.Component{
                             var group = selected[0];
                                     return <GroupJumbotron 
                                             ID={group.ID}
-                                            name={group.name}
-                                            description={group.description}
-                                            listOfEvents={group.listOfEvents}
+                                            post_title={group.post_title}
+                                            post_content={group.post_content}
                                             />;
                                     
                         }
@@ -42,17 +41,17 @@ export class MeetupGroup extends React.Component{
                                 {({ state, actions }) => 
                                     (
                                         state.events.map((item,index)=>{
-                                            if (item.meetupID === parseInt(this.props.match.params.theid)) {
+                                            if (item.meta_keys._meetup === parseInt(this.props.match.params.theid)) {
                                                 return <EventOverview 
                                                         key={index}
                                                         ID={item.ID}
-                                                        name={item.name}
-                                                        dateTime={item.dateTime}
-                                                        description={item.description}
-                                                        location={item.location}
-                                                        RSVPYes={item.RSVPYes}
-                                                        RSVPNo={item.RSVPNo}
-                                                        meetupID={item.meetupID}
+                                                        post_title={item.post_title}
+                                                        day={item.meta_keys.day}
+                                                        time={item.meta_keys.time}
+                                                        post_content={item.post_content}
+                                                        _rsvpYes={item.meta_keys._rsvpYes}
+                                                        _rsvpNo={item.meta_keys._rsvpNo}
+                                                        _meetup={item.meta_keys._meetup}
                                                         />;
                                             }        
                                             

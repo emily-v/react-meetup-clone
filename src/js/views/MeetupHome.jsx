@@ -25,15 +25,14 @@ export class MeetupHome extends React.Component{
                                             return <EventOverview 
                                                     key={index}
                                                     ID={item.ID}
-                                                    name={item.name}
-                                                    dateTime={item.dateTime}
-                                                    description={item.description}
-                                                    location={item.location}
-                                                    RSVPYes={item.RSVPYes}
-                                                    RSVPNo={item.RSVPNo}
-                                                    meetupID={item.meetupID}
+                                                    post_title={item.post_title}
+                                                    day={item.meta_keys.day}
+                                                    time={item.meta_keys.time}
+                                                    post_content={item.post_content}
+                                                    _rsvpYes={item.meta_keys._rsvpYes}
+                                                    _rsvpNo={item.meta_keys._rsvpNo}
+                                                    _meetup={item.meta_keys._meetup}
                                                     />;
-                                            
                                         })
                                     )
                                 }
