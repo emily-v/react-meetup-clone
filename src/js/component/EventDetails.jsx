@@ -31,8 +31,10 @@ function EventDetails(props){
                             <div className="card">
                                 <div className="card-body">
                                     <FontAwesomeIcon icon={faClock} className="h3"/>
-                                    <p className="mb-1"><Moment format="MMMM D">{props.meta_keys.day}</Moment></p>
-                                    <p><Moment format="h:mm a">{props.meta_keys.time}</Moment></p>
+                                    <p className="mb-1"><Moment format="MMMM D">{props.day}</Moment></p>
+                                    <p>{props.time}</p>
+                                    {/*<p className="mb-1"><Moment format="MMMM D">{props.day}</Moment></p>
+                                    <p><Moment format="h:mm a">{props.time}</Moment></p>*/}
                                     <p>Every first and last tuesday of the month</p>
                                 </div>
                             </div>
@@ -45,7 +47,8 @@ function EventDetails(props){
 }
 
 EventDetails.propTypes = {
-        meta_keys: PropTypes.string
+        day: PropTypes.string,
+        time: PropTypes.string
     };
 
 

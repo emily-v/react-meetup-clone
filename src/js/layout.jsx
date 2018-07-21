@@ -41,22 +41,11 @@ export default class Layout extends React.Component {
             "session":{
                     
             },
-            "isLoading": true
+            "isLoading": false
         };
         
         this.actions = {
-            "loadSession": () => {
-                fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/events')
-                    .then(response => response.json())
-                    .then(data => this.setState({ events: data, isLoading: false }))
-                    .catch(error => console.log(error));
-                    
-            fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/meetups')
-                    .then(response => response.json())
-                    .then(data => this.setState({ meetups: data }))
-                    .catch(error => console.log(error));
-            },
-            /*"loadSession": (receivedUsername, receivedPassword) => {
+            "loadSession": (receivedUsername, receivedPassword) => { //need to change key and value names?
                 this.setState(
                     {
                         session: {
@@ -67,7 +56,31 @@ export default class Layout extends React.Component {
                         }
                         
                     });
-            },*/
+                    
+                    var data = {
+                        "username":receivedUsername, 
+                        "password":receivedPassword
+                      };
+                      
+                    fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/jwt-auth/v1/token',
+                    {
+                      method: 'POST',
+                      body: JSON.stringify(data),
+                      headers: new Headers({
+                        'Content-Type': 'application/json'
+                        })
+                    })
+                    .then( (response) => response.json())
+                    .then( (data) => {
+                        
+                        if (typeof(data.token) === "undefined" ) throw new Error(data.message);
+                        this.setState({session: data});
+                        
+                        //ReactGA.set({ userId: data.user_nicename });
+                    })
+                    .catch(error => console.log(error));
+            },
+            
             "rsvpEvent": (id, userId, answer, token) => {
                 var indexOfEvent = 0;
                 var theArrayWithEvent = this.state.events.filter( (item, index) => {
@@ -81,20 +94,35 @@ export default class Layout extends React.Component {
                 let event = theArrayWithEvent[0];
                 
                 if(answer === "yes"){
-                    event.RSVPYes.push(userId);
+                    event.meta_keys._rsvpYes.push(userId);
                 }else{
-                    event.RSVPNo.push(userId);
+                    event.meta_keys._rsvpNo.push(userId);
                 }
                 
                 var tempArray = this.state.events;
                 tempArray[indexOfEvent] = event;
                 
                 this.setState({"events": tempArray});
-                }
+            },
             
+            "loadInitialData": () => {
+                
+                fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/events')
+                    .then(response => response.json())
+                    .then(data => this.setState({ events: data, isLoading: false }))
+                    .catch(error => console.log(error));
+                    
+            fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/meetups')
+                    .then(response => response.json())
+                    .then(data => this.setState({ meetups: data }))
+                    .catch(error => console.log(error));
+            }
         };
-        
     }
+            
+    componentDidMount() {
+    this.actions.loadInitialData();
+  }
 
     render() {
         return (
@@ -106,7 +134,7 @@ export default class Layout extends React.Component {
                             <Route path="/group/:theid" component={MeetupGroup} />
                             <Route path="/event/:theid" component={MeetupEvent} />
                         </Provider>
-                        <Route render={() => <h1>Not found!</h1>} />
+                        {/*<Route render={() => <h1>Not found!</h1>} />*/}
                     </Switch>
                 </BrowserRouter>
             </React.Fragment>

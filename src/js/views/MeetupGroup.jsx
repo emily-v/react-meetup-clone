@@ -41,7 +41,7 @@ export class MeetupGroup extends React.Component{
                                 {({ state, actions }) => 
                                     (
                                         state.events.map((item,index)=>{
-                                            if (item.meta_keys._meetup === parseInt(this.props.match.params.theid)) {
+                                            if (item.meta_keys._meetup === (this.props.match.params.theid)) {
                                                 return <EventOverview 
                                                         key={index}
                                                         ID={item.ID}

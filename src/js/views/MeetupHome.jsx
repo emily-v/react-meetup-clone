@@ -21,6 +21,8 @@ export class MeetupHome extends React.Component{
                             <Consumer>
                                 {({ state, actions }) => 
                                     (
+                                        state.isLoading ? (<p>Loading...</p>)
+                                        :
                                         state.events.map((item,index)=>{
                                             return <EventOverview 
                                                     key={index}

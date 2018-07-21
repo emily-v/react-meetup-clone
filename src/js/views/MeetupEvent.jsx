@@ -36,7 +36,7 @@ export class MeetupEvent extends React.Component{
                                 return item.ID === parseInt (this.props.match.params.theid);
                             });
                             
-                            if(selected.length <=0) {return <h3>This event does not exsist</h3>;}
+                            if(selected.length <=0) {return <h3>This event does not exsist</h3>;} //or if(!selected) / Loading ??
                             var event=selected [0];
                             
                             const yesDisabled = typeof event.meta_keys._rsvpYes !== 'undefined' && event.meta_keys._rsvpYes.includes(user.id)  ? "disabled" : "";
