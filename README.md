@@ -36,6 +36,11 @@ Now you have an index.js that will start your javascript execution (like the win
 ```sh
 $ npm run build
 ```
+###### However, in Cloud9 run the following and the bundle will be re-built on each Save and browser will automatically refresh.
+
+```sh
+$ npm run c9
+```
 
 ###### Webpack will generate your bundle.js inside the public folder
 
