@@ -1,5 +1,10 @@
 # Hello World with React and Cloud 9
 
+### Project is not live - here is demo animation
+![meetup app demo](https://media.giphy.com/media/WNTQowAjukSwzRYolP/giphy.gif)
+
+### Setup and run instructions in IDE:
+
 #### Make sure you have node version 8
 ```sh
 $ nvm install 8
