@@ -19,15 +19,15 @@ export class MeetupGroup extends React.Component{
                     {({ state, actions }) => 
                         {
                             var selected = state.meetups.filter(item=>item.ID === parseInt(this.props.match.params.theid));
-                            if (selected.length <= 0){
-                                return <h3 className="text-danger">Invalid ID</h3>;
-                            }
                             var group = selected[0];
-                                    return <GroupJumbotron 
-                                            ID={group.ID}
-                                            post_title={group.post_title}
-                                            post_content={group.post_content}
-                                            />;
+                            if (selected.length <= 0){
+                                return <h3>Loading...</h3>;
+                            }
+                                return <GroupJumbotron 
+                                        ID={group.ID}
+                                        post_title={group.post_title}
+                                        post_content={group.post_content}
+                                        />;
                                     
                         }
                     }
@@ -40,6 +40,8 @@ export class MeetupGroup extends React.Component{
                             <Consumer>
                                 {({ state, actions }) => 
                                     (
+                                        state.isLoading ? (<p>Loading...</p>)
+                                        :
                                         state.events.map((item,index)=>{
                                             if (item.meta_keys._meetup === (this.props.match.params.theid)) {
                                                 return <EventOverview 

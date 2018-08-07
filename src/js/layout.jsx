@@ -1,14 +1,10 @@
-/*-------TO DO FOR THIS PROJECT---------
--Change "Meetup N" to name of meetup group
--Address change of RSVP response
-*/
-
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import {MeetupHome} from "./views/MeetupHome.jsx";
 import {MeetupGroup} from "./views/MeetupGroup.jsx";
 import {MeetupEvent} from "./views/MeetupEvent.jsx";
+import ScrollToTop from "./component/ScrollToTop.jsx";
 
 import {Provider} from "./stores/AppContext.jsx";
 
@@ -41,11 +37,11 @@ export default class Layout extends React.Component {
             "session":{
                     
             },
-            "isLoading": false
+            "isLoading": true
         };
         
         this.actions = {
-            "loadSession": (receivedUsername, receivedPassword) => { //need to change key and value names?
+            "loadSession": (receivedUsername, receivedPassword) => {
                 this.setState(
                     {
                         session: {
@@ -81,7 +77,7 @@ export default class Layout extends React.Component {
                     .catch(error => console.log(error));
             },
             
-            "rsvpEvent": (id, userId, answer, token) => {
+            /*"rsvpEvent": (id, userName, answer, token) => {
                 var indexOfEvent = 0;
                 var theArrayWithEvent = this.state.events.filter( (item, index) => {
                     
@@ -94,15 +90,41 @@ export default class Layout extends React.Component {
                 let event = theArrayWithEvent[0];
                 
                 if(answer === "yes"){
-                    event.meta_keys._rsvpYes.push(userId);
+                    event.meta_keys._rsvpYes.push(userName);
                 }else{
-                    event.meta_keys._rsvpNo.push(userId);
+                    event.meta_keys._rsvpNo.push(userName);
                 }
                 
                 var tempArray = this.state.events;
                 tempArray[indexOfEvent] = event;
                 
                 this.setState({"events": tempArray});
+            },*/
+            
+            "rsvpEvent": (id, userName, answer) => {
+                let url = 'https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/events/rsvp/';
+                
+                var data = {
+                    username: userName,
+                    answer: answer
+                };
+                
+                fetch(url+id,
+                {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer '+this.state.session.token
+                    })
+                })
+                .then(data => {
+                    if (data.status !== 200 ){
+                        throw new Error(data);//INVALID TOKEN
+                    }
+                    this.actions.loadInitialData();
+                })
+                .catch(error => console.log(error));
             },
             
             "loadInitialData": () => {
@@ -112,7 +134,7 @@ export default class Layout extends React.Component {
                     .then(data => this.setState({ events: data, isLoading: false }))
                     .catch(error => console.log(error));
                     
-            fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/meetups')
+                fetch('https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/meetups')
                     .then(response => response.json())
                     .then(data => this.setState({ meetups: data }))
                     .catch(error => console.log(error));
@@ -128,14 +150,16 @@ export default class Layout extends React.Component {
         return (
             <React.Fragment>
                 <BrowserRouter>
-                    <Switch>
-                        <Provider value={{state:this.state, actions:this.actions}}>
-                            <Route exact path="/" component={MeetupHome} />
-                            <Route path="/group/:theid" component={MeetupGroup} />
-                            <Route path="/event/:theid" component={MeetupEvent} />
-                        </Provider>
-                        {/*<Route render={() => <h1>Not found!</h1>} />*/}
-                    </Switch>
+                    <ScrollToTop>
+                        <Switch>
+                            <Provider value={{state:this.state, actions:this.actions}}>
+                                <Route exact path="/" component={MeetupHome} />
+                                <Route path="/group/:theid" component={MeetupGroup} />
+                                <Route path="/event/:theid" component={MeetupEvent} />
+                            </Provider>
+                            {/*<Route render={() => <h1>Not found!</h1>} />*/}
+                        </Switch>
+                    </ScrollToTop>
                 </BrowserRouter>
             </React.Fragment>
         );

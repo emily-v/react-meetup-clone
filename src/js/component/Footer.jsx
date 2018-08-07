@@ -6,7 +6,7 @@ function Footer(props){
     return (
         <footer className="bg-dark text-center py-2">
             <Link to={"/"}>
-                <img src="http://via.placeholder.com/150x50" />
+                <img className="img-fluid py-3" src="https://www.4geeksacademy.co/wp-content/themes/the-fastest/assets/img/logo-white.png" />
             </Link>
         </footer>
         );

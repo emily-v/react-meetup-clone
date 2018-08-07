@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+//import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../component/Navbar.jsx';
 //import EventJumbotron from '../component/EventJumbotron.jsx';
@@ -39,8 +39,8 @@ export class MeetupEvent extends React.Component{
                             if(selected.length <=0) {return <h3>This event does not exsist</h3>;} //or if(!selected) / Loading ??
                             var event=selected [0];
                             
-                            const yesDisabled = typeof event.meta_keys._rsvpYes !== 'undefined' && event.meta_keys._rsvpYes.includes(user.id)  ? "disabled" : "";
-                            const noDisabled =typeof event.meta_keys._rsvpNo !== 'undefined' && event.meta_keys._rsvpNo.includes(user.id)  ? "disabled" : "";
+                            const yesDisabled = typeof event.meta_keys._rsvpYes !== 'undefined' && event.meta_keys._rsvpYes.includes(user.user_nicename)  ? "disabled" : "";
+                            const noDisabled =typeof event.meta_keys._rsvpNo !== 'undefined' && event.meta_keys._rsvpNo.includes(user.user_nicename)  ? "disabled" : "";
                             
                             return (
                                 <div>
@@ -68,7 +68,7 @@ export class MeetupEvent extends React.Component{
                                                                     className="btn btn-primary mr-1"
                                                                     disabled={yesDisabled}
                                                                     onClick={() => actions.rsvpEvent(   this.props.match.params.theid,
-                                                                                                        user.id,
+                                                                                                        user.user_nicename,
                                                                                                         "yes",
                                                                                                         user.token)}>
                                                                     Yes
@@ -77,7 +77,7 @@ export class MeetupEvent extends React.Component{
                                                                     className="btn btn-primary ml-1"
                                                                     disabled={noDisabled}
                                                                     onClick={() => actions.rsvpEvent(   this.props.match.params.theid,
-                                                                                                        user.id,
+                                                                                                        user.user_nicename,
                                                                                                         "no",
                                                                                                         user.token)}>
                                                                     No
