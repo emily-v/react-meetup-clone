@@ -21,7 +21,7 @@ export class MeetupHome extends React.Component{
                             <Consumer>
                                 {({ state, actions }) => 
                                     (
-                                        state.isLoading ? (<p>Loading...</p>)
+                                        state.isLoading ? (<p>Migrating API endpoints...Data fetch repair in progress</p>)
                                         :
                                         state.events.map((item,index)=>{
                                             return <EventOverview 
