@@ -9,7 +9,7 @@ Features a listing of events viewable as a feed, by meetup group or individually
 
 ![meetup app demo](https://media.giphy.com/media/WNTQowAjukSwzRYolP/giphy.gif)
 
-### Live App: https://emily-v.github.io/react-meetup-clone/
+### Live App: (coming soon)
 
 Built from the 4GeeksAcademy react-hello boilerplate here: https://github.com/4GeeksAcademy/react-hello
 
