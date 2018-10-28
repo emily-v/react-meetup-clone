@@ -1,39 +1,25 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var PrettierPlugin = require("prettier-webpack-plugin");
 
 module.exports = {
-  entry: ['./src/js/index.js'], 
+  entry: [
+    './src/js/index.js'
+  ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
-    publicPath: path.resolve(__dirname, '/')
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
-        { 
-          test: /\.(js|jsx)$/, 
-          exclude: /node_modules/, 
-          use: [
-            "babel-loader", 
-            "eslint-loader"
-            ]
-        },
-        { test: /\.md$/, use: [
-              {
-                  loader: "html-loader"
-              },
-              {
-                  loader: "markdown-loader",
-                  options: {
-                      /* your options here */
-                  }
-              }
-          ]
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: ['babel-loader', 'eslint-loader']
         },
         {
-          test: [/\.css$/, /\.scss$/],
-          use: [{
+          test: /\.(css|scss)$/, use: [{
               loader: "style-loader" // creates style nodes from JS strings
           }, {
               loader: "css-loader" // translates CSS into CommonJS
@@ -42,8 +28,7 @@ module.exports = {
           }]
         }, //css only files
         { 
-          test: /\.(png|svg|jpg|gif)$/, 
-          use: {
+          test: /\.(png|svg|jpg|gif)$/, use: {
             loader: 'file-loader',
             options: { name: '[name].[ext]' } 
           }
@@ -52,11 +37,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js']
   },
   devtool: "source-map",
   devServer: {
-    contentBase: './dist',
+    contentBase:  './dist',
     hot: true,
     disableHostCheck: true,
     historyApiFallback: true
@@ -74,6 +59,17 @@ module.exports = {
     new HtmlWebpackPlugin({
         favicon: '4geeks.ico',
         template: 'template.html'
+    }),
+    new PrettierPlugin({
+      parser: "babylon",
+      printWidth: 80,             // Specify the length of line that the printer will wrap on.
+      tabWidth: 4,                // Specify the number of spaces per indentation-level.
+      useTabs: true,              // Indent lines with tabs instead of spaces.
+      bracketSpacing: true,
+      extensions: [ ".js", ".jsx" ],
+      jsxBracketSameLine: true,
+      semi: true,                 // Print semicolons at the ends of statements.
+      encoding: 'utf-8'           // Which encoding scheme to use on files
     })
   ]
 };
