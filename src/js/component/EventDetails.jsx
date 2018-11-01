@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 function EventDetails(props) {
+	let eventTime = props.time;
+	const segments = eventTime.split(":");
+	eventTime = parseInt(segments[0]) + ":" + segments[2];
 	return (
 		<div>
 			<div className="container-fluid">
@@ -16,12 +19,7 @@ function EventDetails(props) {
 					<div className="col-md-7">
 						<img src="https://via.placeholder.com/800x500" />
 						<h2>Details</h2>
-						<p>
-							Sunggle up with cute kitties, hot lattes, and a
-							book. We host this event twice a month for a place
-							to socialize or maybe come out for alternative
-							therapy.
-						</p>
+						<p>{props.post_content}</p>
 						<p>There are a few rules to follow for this event:</p>
 						<ul>
 							<li>
@@ -55,7 +53,7 @@ function EventDetails(props) {
 											{props.day}
 										</Moment>
 									</p>
-									<p>{props.time}</p>
+									<p>{eventTime}</p>
 									{/*<p className="mb-1"><Moment format="MMMM D">{props.day}</Moment></p>
                                     <p><Moment format="h:mm a">{props.time}</Moment></p>*/}
 									<p>
@@ -74,7 +72,8 @@ function EventDetails(props) {
 
 EventDetails.propTypes = {
 	day: PropTypes.string,
-	time: PropTypes.string
+	time: PropTypes.string,
+	post_content: PropTypes.string
 };
 
 export default EventDetails;

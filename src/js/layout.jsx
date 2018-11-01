@@ -53,16 +53,13 @@ export default class Layout extends React.Component {
 					password: receivedPassword
 				};
 
-				fetch(
-					"https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/jwt-auth/v1/token",
-					{
-						method: "POST",
-						body: JSON.stringify(data),
-						headers: new Headers({
-							"Content-Type": "application/json"
-						})
-					}
-				)
+				fetch("https://assets.breatheco.de/apis/fake/meetup/session", {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: new Headers({
+						"Content-Type": "application/json"
+					})
+				})
 					.then(response => response.json())
 					.then(data => {
 						if (typeof data.token === "undefined")
@@ -125,18 +122,14 @@ export default class Layout extends React.Component {
 			},
 
 			loadInitialData: () => {
-				fetch(
-					"https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/events"
-				)
+				fetch("https://assets.breatheco.de/apis/fake/meetup/events")
 					.then(response => response.json())
 					.then(data =>
 						this.setState({ events: data, isLoading: false })
 					)
 					.catch(error => console.log(error));
 
-				fetch(
-					"https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/meetups"
-				)
+				fetch("https://assets.breatheco.de/apis/fake/meetup/meetups")
 					.then(response => response.json())
 					.then(data => this.setState({ meetups: data }))
 					.catch(error => console.log(error));

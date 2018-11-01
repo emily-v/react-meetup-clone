@@ -6,16 +6,22 @@ import Moment from "react-moment";
 //import {Consumer} from "../stores/AppContext.jsx";
 
 function EventOverview(props) {
+	let eventTime = props.time;
+	const segments = eventTime.split(":");
+	eventTime = parseInt(segments[0]) + ":" + segments[2];
 	return (
 		<div className="card mb-4">
-			{/*<h2 className="card-header">{props.day}</h2>*/}
 			<h2 className="card-header">
 				<Moment format="MMMM D">{props.day}</Moment>
 			</h2>
 			<div className="row pt-3">
 				<div className="col-4 text-center">
-					<h3>{props.time}</h3>
-					{/*<h3><Moment format="h:mm a">{props.time}</Moment></h3>*/}
+					{/*<h3>
+						<Moment format="h:mm">
+							{props.time}
+						</Moment>
+					</h3>*/}
+					<h3>{eventTime} pm</h3>
 				</div>
 				<div className="col">
 					<h4>

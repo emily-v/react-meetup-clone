@@ -16,7 +16,7 @@ function GroupJumbotron(props) {
 						/>
 					</div>
 					<div className="col-md-6 px-4">
-						<h3>Meetup {props.ID}</h3>
+						<h3>Meetup {props.post_title}</h3>
 						<p className="my-1">
 							<small className="text-muted">Location</small>
 						</p>

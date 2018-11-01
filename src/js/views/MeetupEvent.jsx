@@ -37,7 +37,7 @@ export class MeetupEvent extends React.Component {
 						});
 
 						if (selected.length <= 0) {
-							return <h3>This event does not exsist</h3>;
+							return <h3>This event does not exist</h3>;
 						} //or if(!selected) / Loading ??
 						var event = selected[0];
 
