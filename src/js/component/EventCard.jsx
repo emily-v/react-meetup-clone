@@ -5,10 +5,10 @@ import Moment from "react-moment";
 
 //import {Consumer} from "../stores/AppContext.jsx";
 
-function EventOverview(props) {
+function EventCard(props) {
 	let eventTime = props.time;
 	const segments = eventTime.split(":");
-	eventTime = parseInt(segments[0]) + ":" + segments[2];
+	eventTime = parseInt(segments[0]) + ":" + segments[1];
 	return (
 		<div className="card mb-4">
 			<h2 className="card-header">
@@ -41,7 +41,7 @@ function EventOverview(props) {
 	);
 }
 
-EventOverview.propTypes = {
+EventCard.propTypes = {
 	_meetup: PropTypes.string,
 	post_title: PropTypes.string,
 	ID: PropTypes.number,
@@ -49,4 +49,4 @@ EventOverview.propTypes = {
 	time: PropTypes.string
 };
 
-export default EventOverview;
+export default EventCard;

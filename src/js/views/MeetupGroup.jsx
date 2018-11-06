@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Navbar from "../component/Navbar.jsx";
 import GroupJumbotron from "../component/GroupJumbotron.jsx";
-import EventOverview from "../component/EventOverview.jsx";
+import EventCard from "../component/EventCard.jsx";
 import Footer from "../component/Footer.jsx";
 
 import { Consumer } from "../stores/AppContext.jsx";
@@ -50,7 +50,7 @@ export class MeetupGroup extends React.Component {
 												this.props.match.params.theid
 											) {
 												return (
-													<EventOverview
+													<EventCard
 														key={index}
 														ID={item.ID}
 														post_title={

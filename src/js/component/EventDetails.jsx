@@ -11,7 +11,7 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 function EventDetails(props) {
 	let eventTime = props.time;
 	const segments = eventTime.split(":");
-	eventTime = parseInt(segments[0]) + ":" + segments[2];
+	eventTime = parseInt(segments[0]) + ":" + segments[1];
 	return (
 		<div>
 			<div className="container-fluid">

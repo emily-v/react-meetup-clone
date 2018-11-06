@@ -2,7 +2,7 @@ import React from "react";
 
 import Navbar from "../component/Navbar.jsx";
 import HomeJumbotron from "../component/HomeJumbotron.jsx";
-import EventOverview from "../component/EventOverview.jsx";
+import EventCard from "../component/EventCard.jsx";
 import Footer from "../component/Footer.jsx";
 
 import { Consumer } from "../stores/AppContext.jsx";
@@ -24,7 +24,7 @@ export class MeetupHome extends React.Component {
 									) : (
 										state.events.map((item, index) => {
 											return (
-												<EventOverview
+												<EventCard
 													key={index}
 													ID={item.ID}
 													post_title={item.post_title}

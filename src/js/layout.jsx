@@ -71,7 +71,8 @@ export default class Layout extends React.Component {
 					.catch(error => console.log(error));
 			},
 
-			/*"rsvpEvent": (id, userName, answer, token) => {
+			/* ----RSVP NO FETCH----
+			"rsvpEvent": (id, userName, answer, token) => {
                 var indexOfEvent = 0;
                 var theArrayWithEvent = this.state.events.filter( (item, index) => {
                     
@@ -95,6 +96,7 @@ export default class Layout extends React.Component {
                 this.setState({"events": tempArray});
             },*/
 
+			/*----RSVP WITH FETCH (OLD ENDPOINTS)----
 			rsvpEvent: (id, userName, answer) => {
 				let url =
 					"https://wordpress-breathecode-cli-nachovz.c9users.io/wp-json/sample_api/v1/events/rsvp/";
@@ -119,7 +121,7 @@ export default class Layout extends React.Component {
 						this.actions.loadInitialData();
 					})
 					.catch(error => console.log(error));
-			},
+			},*/
 
 			loadInitialData: () => {
 				fetch("https://assets.breatheco.de/apis/fake/meetup/events")
